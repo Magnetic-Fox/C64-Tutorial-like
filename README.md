@@ -15,7 +15,7 @@ However, the C64 memory map and 6502 instruction set (if you want to make some a
 Yep, I know, that I haven't written any Makefiles for my codes. Shame on me, but it's just because I've done those codes really quick in breaks from sad university life. :P
 And also I love to write too much in the console while experimenting with some new programming tactics. ;)
 
-OK, not to saying so much..
+OK, not to say so much..
 
 ### Compiling C codes
 
@@ -57,7 +57,7 @@ To make it properly, open c128check.prg in hex editor (for example Hex Fiend on 
 ```
 01 08 0B 08 20 03 9E 32 30 36 31 00 00 00
 ```
-This will make a Basic startup code, and you will able to run this code both on Commodore 64 and Commodore 128.
+This will make a Basic startup code, and you will be able to run this code both on Commodore 64 and Commodore 128.
 
 I know, not really comfortable to work on it. I'll try to make some Makefiles next time. At least for assembly. ;)
 
@@ -73,7 +73,7 @@ I felt perfect. "I can make everything!". :) But, there wasn't as good and easy 
 
 ### Documentation of cc65
 
-Hehe, that's something that does not exists.. :D
+Haha, that's something that does not exists.. :D
 Well, to be fair, it nearly doesn't exists. The main documentation of procedures and structures of libraries available to use is in the include files and in archived mailing list (which is also not fully archived because it was deleted from cc65's official website due to GDPR).
 However, I decided to be stubborn and to find as much solutions for my problems as I'll be able to.
 
