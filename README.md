@@ -87,3 +87,6 @@ I've made much effort to provide here working and checked codes with hope it wil
 Codes provided here are free for personal use.
 If you like to use any part of these codes in your software, just please give me some simple credits and it will be okay. ;)
 In case you would like to make paid software and use parts of these codes - please, contact me before.
+
+*Bartłomiej "Magnetic-Fox" Węgrzyn,
+8th January, 2021*
