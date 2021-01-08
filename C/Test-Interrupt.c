@@ -1,36 +1,36 @@
 /*
+ *
+ * Simple interrupt handler.
+ * December 15th, 2019
+ *
+ * Comment added: January 7th, 2021
+ *
+ * The goal of this software is to create simple procedure and link
+ * it to the interrupt vector which is executed by RESTORE key.
+ *
+ * (C)2019-2021 Bartłomiej "Magnetic-Fox" Węgrzyn!
+ *
+ */
 
- Simple interrupt handler.
- December 15th, 2019
- 
- Comment added: January 7th, 2021
- 
- The goal of this software is to create simple procedure and link
- it to the interrupt vector which is executed by RESTORE key.
- 
- (C)2019-2021 Bartłomiej "Magnetic-Fox" Węgrzyn!
- 
-*/
+#include <peekpoke.h>                           /* PEEK and POKE operations. */
+#include <cbm.h>                                /* KERNAL procedures. */
+#include <conio.h>                              /* Basic console procedures. */
 
-#include <peekpoke.h>                       /* PEEK and POKE operations. */
-#include <cbm.h>                            /* KERNAL procedures. */
-#include <conio.h>                          /* Basic console procedures. */
+#define GET() (int)cgetc()                      /* Macro for getting single chars from keyboard. */
+#define put(c) cbm_k_bsout(c)                   /* Macro for printing single chars on screen. */
 
-#define GET() (int)cgetc()                  /* Macro for getting single chars from keyboard. */
-#define put(c) cbm_k_bsout(c)               /* Macro for printing single chars on screen. */
-
-void screen_print(unsigned char* data)      // Simple procedure for printing string.
+void screen_print(unsigned char* data)          // Simple procedure for printing string.
 {
 	unsigned int x=0;                       // Temporary variable for string loop.
     
 	while(data[x]>=0x20)                    // String loop which displays characters until it find first non-printable character.
 	{
-		cbm_k_bsout(data[x++]);             // Prints single character at the screen and goes next.
+		cbm_k_bsout(data[x++]);         // Prints single character at the screen and goes next.
 	}
 	return;                                 // Procedure end.
 }
 
-void function(void)                         // Our function to link to the interrupt vector. This is only a simple procedure which prints simple text.
+void function(void)                             // Our function to link to the interrupt vector. This is only a simple procedure which prints simple text.
 {
 	screen_print("interrupt!");             // Prints "interrupt!" text.
     
@@ -40,7 +40,7 @@ void function(void)                         // Our function to link to the inter
 	return;                                 // Procedure end.
 }
 
-void callFunction(void)                     // Procedure for calling our interrupt procedure and come back from interrupt.
+void callFunction(void)                         // Procedure for calling our interrupt procedure and come back from interrupt.
 {
 	function();                             // Calls our function.
 	asm("rti");                             // After end of our function it's needed to come back from an interrupt. So, we're doing it.
@@ -48,7 +48,7 @@ void callFunction(void)                     // Procedure for calling our interru
 	return;                                 // Procedure end. Note that this part of code isn't reached after RTI.
 }
 
-int main(void)                              // Main code.
+int main(void)                                  // Main code.
 {
 	unsigned int var792, var793;            // Temporary address variables.
 	unsigned char x;                        // Temporary character variable.
@@ -66,7 +66,7 @@ int main(void)                              // Main code.
     
 	do                                      // Waits for keyboard actions.
 	{
-		x=GET();                            // Gets received character codes.
+		x=GET();                        // Gets received character codes.
 	} while(x!=13);                         // If the code is equal to 13 (RETURN), then we can finish this program.
     
 	POKE(792,var792);                       // We're restoring address of original procedure.
