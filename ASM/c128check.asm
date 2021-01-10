@@ -53,13 +53,32 @@ txt0:   .byte           "THIS PROGRAM MUST BE RUN UNDER",$0d,"COMMODORE 64.",$0d
 ; If Commodore 64 detected:
 
 ok:	
-                        ; Code of actual program goes here.
-                        ; It had to be something here, at least only RTS to
-                        ; finish this program properly.
-                        ; If You like to combine this stub with cc65-compiled
-                        ; program, You have to set correct compiling address
-                        ; of just C program.
+                        ; Code of actual program goes here. This part is executed,
+                        ; when Commodore 64 is detected. As it is just a stub,
+                        ; there isn't any instructions here, which may even cause
+                        ; a Commodore 64 freeze.
+                        ; Please note, that IT HAS TO BE something here, at least
+                        ; only the RTS instruction to finish this stub properly.
+                        ; If you like to combine this code with cc65-compiled
+                        ; program, you have to set correct compiling address
+                        ; of your C program.
                         ; --start-addr must be set to 2131 and the first usable
-                        ; instruction here must be under 2143.
-                        ; You must include here first correct instruction to
-                        ; make the whole program usable and stable.
+                        ; instruction must be here under 2143's byte of C64's
+                        ; memory.
+                        ; In short, you must include here first correct instruction
+                        ; to make the whole program usable and stable.
+                        ; If you like to test this stub without modifying this
+                        ; code, you may manually add RTS instruction in Basic.
+                        ; When you have this code properly compiled and linked,
+                        ; and if you have this code loaded on C64, add RTS
+                        ; instruction via POKE into 2143's byte:
+                        ;
+                        ;  POKE 2143,96
+                        ;
+                        ; Then running this stub should finish without any
+                        ; strange behaviors and look similar to this:
+                        ;
+                        ; ...
+                        ; RUN
+                        ;
+                        ; READY.
